@@ -1,0 +1,61 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0rem;
+}
+.left {
+  position: absolute;
+  left: 6rem;
+  text-align: center;
+  .heading {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: rgb(29, 29, 29);
+  }
+}
+.center {
+  display: flex;
+  flex-direction: row;
+
+  .link {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(48, 48, 48);
+    margin-right: 2.5rem;
+    cursor: pointer;
+    &:hover {
+      color: rgb(94, 94, 255);
+    }
+  }
+}
+.right {
+  position: absolute;
+  right: 6rem;
+  .btn_filled {
+    background-color: black;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    margin-left: 0.2rem;
+  }
+  .btn {
+    background-color: white;
+    padding: 0.6rem 1.2rem;
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      color: rgb(94, 94, 255);
+    }
+  }
+}
