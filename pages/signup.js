@@ -1,12 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import NavBar from "../components/NavBar";
-import styles from "../styles/signin.module.scss";
+import styles from "../styles/signup.module.scss";
 import { useRouter } from "next/router";
 
-const Signin = () => {
+const Signup = () => {
   const router = useRouter();
-
   return (
     <div className={styles.container}>
       <Head>
@@ -17,7 +16,7 @@ const Signin = () => {
       <NavBar />
       <div className={styles.main}>
         <div className={styles.left_grid}>
-          <h1 className={styles.heading_main}>Sign in to your account</h1>
+          <h1 className={styles.heading_main}>Create your account</h1>
           <input
             type="text"
             className={styles.text_field}
@@ -28,11 +27,11 @@ const Signin = () => {
             className={styles.text_field}
             placeholder="password"
           />
-          <button className={styles.btn_main}>Sign in</button>
+          <button className={styles.btn_main}>Sign up</button>
           <h1 className={styles.txt_sm}>
-            Don't have an account?{" "}
-            <a className={styles.link} onClick={() => router.push("/signup")}>
-              Sign up
+            Already have an account?{" "}
+            <a className={styles.link} onClick={() => router.push("/signin")}>
+              Sign in
             </a>{" "}
           </h1>
         </div>
@@ -44,4 +43,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;
