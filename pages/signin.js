@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import NavBar from "../components/NavBar";
-import styles from "../styles/signup.module.scss";
+import styles from "../styles/signInUp.module.scss";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { SignInUser } from "../utilities/api";
@@ -90,7 +90,7 @@ const Signin = () => {
           <h1 className={styles.txt_sm}>
             Don't have an account?{" "}
             <a className={styles.link} onClick={() => router.push("/signup")}>
-              Sign un
+              Sign up
             </a>{" "}
           </h1>
         </div>

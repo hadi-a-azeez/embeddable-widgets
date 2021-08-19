@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import NavBar from "../components/NavBar";
-import styles from "../styles/signup.module.scss";
+import styles from "../styles/signInUp.module.scss";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { CreateUser } from "../utilities/api";
