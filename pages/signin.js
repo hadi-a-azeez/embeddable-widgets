@@ -88,7 +88,7 @@ const Signin = () => {
             )}
           </button>
           <h1 className={styles.txt_sm}>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a className={styles.link} onClick={() => router.push("/signup")}>
               Sign up
             </a>{" "}
