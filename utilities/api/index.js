@@ -1,27 +1,38 @@
 import supabase from "../../supabase";
 
 export const CreateUser = async (userData) => {
+  let repsonse;
   const { data: user, error: userError } = await supabase
     .from("users")
     .select("*")
     .eq("email", userData.email);
   if (user.length !== 0) {
-    return { status: 400, message: "User already registered" };
+    repsonse = { status: 400, message: "User already registered" };
   } else {
     const { data, error } = await supabase.from("users").insert(userData);
-    if (data) return { status: 200, message: "User registered successfully" };
-    else return { status: 400, message: "error occured" };
+    if (data) {
+      repsonse = { status: 200, message: "User registered successfully" };
+    } else {
+      repsonse = { status: 400, message: "error occured" };
+    }
   }
+  return repsonse;
 };
 
 export const SignInUser = async (userData) => {
+  let repsonse;
   const { data: user, error: userError } = await supabase
     .from("users")
     .select("*")
     .eq("email", userData.email);
   if (user.length !== 0) {
-    return { status: 200, message: "User Logined" };
+    if (user[0].password === userData.password) {
+      repsonse = { status: 200, message: "User Logined" };
+    } else {
+      repsonse = { status: 400, message: "Check your email or password" };
+    }
   } else {
-    return { status: 400, message: "Check your email or password" };
+    repsonse = { status: 400, message: "Check your email or password" };
   }
+  return repsonse;
 };
