@@ -29,12 +29,24 @@ export default function Home() {
               className={styles.arrow_img}
             ></img>
           </div>
-          <video width="100%" height="100%" className={styles.video} controls>
+          {/* <video width="100%" height="100%" className={styles.video} controls>
             <source
               src="https://assets.mixkit.co/videos/preview/mixkit-face-of-a-fighter-exhausted-during-a-fight-40988-large.mp4"
               type="video/mp4"
             />
-          </video>
+          </video> */}
+          <div className={styles.video}>
+            <div
+              id="vidme-video"
+              data-prop-id="test"
+              data-prop-play_color="#4285f5"
+            ></div>
+            <script
+              type="module"
+              src="https://raveo.xyz/vidscript.js"
+              async
+            ></script>
+          </div>
         </div>
         <h1 className={styles.sub_heading}>
           An embeddable video widget for all your needs with <br></br>video
