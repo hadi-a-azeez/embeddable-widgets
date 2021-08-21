@@ -8,8 +8,29 @@
 
 .main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   height: 85vh;
   width: 100%;
+}
+.btn_primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 0.8rem 1rem;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  border-radius: 0.5rem;
+  background-color: rgb(83, 83, 255);
+  margin-top: 1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 19px 11px 45px 6px rgba(83, 83, 255, 0.19);
+  -webkit-box-shadow: 19px 11px 45px 6px rgba(83, 83, 255, 0.19);
+  -moz-box-shadow: 19px 11px 45px 6px rgba(83, 83, 255, 0.19);
+  &:hover {
+    background-color: rgb(110, 110, 255);
+  }
 }

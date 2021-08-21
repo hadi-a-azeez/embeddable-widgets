@@ -1,26 +1,34 @@
 import Head from "next/head";
-import Image from "next/image";
 import NavBar from "../components/NavBar";
 import styles from "../styles/signInUp.module.scss";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SignInUser } from "../utilities/api";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { validation } from "../utilities/helper";
+import { useUser } from "../utilities/useUser";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState({ state: false, message: "" });
+  const router = useRouter();
+  const { user, signIn } = useUser();
+
+  useEffect(() => {
+    if (user) {
+      router.replace("/dashboard");
+    }
+  }, [user]);
 
   const handleSigninClick = async () => {
     setIsLoading(true);
     const { isValid, error } = validation("name", email, password);
     setIsError(error);
     if (isValid) {
-      const { user, session, error } = await SignInUser({ email, password });
+      const { user, error } = await signIn({ email, password });
       console.log(user);
       if (error) setIsError({ state: true, message: error.message });
       else setIsError({ state: false, message: user.message });
@@ -28,7 +36,6 @@ const Signin = () => {
     setIsLoading(false);
   };
 
-  const router = useRouter();
   return (
     <div className={styles.container}>
       <Head>
