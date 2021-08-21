@@ -43,7 +43,7 @@ export default function Home() {
           <script
             type="module"
             src="https://raveo.xyz/vidscript.js"
-            defer
+            async
           ></script>
         </div>
 
