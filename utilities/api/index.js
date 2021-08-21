@@ -9,10 +9,8 @@ export const CreateUser = async ({ name, email, password }) => {
     const { data, error: userError } = await supabase
       .from("users")
       .insert({ email, name });
-    return user;
-  } else {
-    return error;
   }
+  return { user, error };
 };
 
 export const SignInUser = async (userData) => {

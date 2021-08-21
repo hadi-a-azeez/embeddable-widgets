@@ -21,10 +21,9 @@ const Signup = () => {
     const { isValid, error } = validation(name, email, password);
     setIsError(error);
     if (isValid) {
-      const user = await CreateUser({ name, email, password });
+      const { user, error } = await CreateUser({ name, email, password });
       console.log(user);
-      if (user.status === 400)
-        setIsError({ state: true, message: user.message });
+      if (error) setIsError({ state: true, message: error.message });
       else setIsError({ state: true, message: user.message });
     }
     setIsLoading(false);
