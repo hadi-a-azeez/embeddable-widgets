@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useEffect, useState, createContext, useContext } from "react";
 import supabase from "../supabase";
 
@@ -8,6 +9,7 @@ export const UserContextProvider = (props) => {
   const [session, setSession] = useState(null);
   const [user, setUser] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const session = supabase.auth.session();
@@ -31,7 +33,7 @@ export const UserContextProvider = (props) => {
     if (user) {
       Promise.allSettled([getUserDetails()]).then((results) => {
         setUserDetails(results[0].value.data);
-        console.log(results);
+        console.log(results[0].value.data);
         setUserLoaded(true);
       });
     }
@@ -50,11 +52,23 @@ export const UserContextProvider = (props) => {
     return { user, error };
   };
 
+  const signInOAuth = async (provider) => {
+    const { user, error } = await supabase.auth.signIn(provider);
+    if (user) {
+      console.log(user);
+      router.replace("/dashboard");
+    } else {
+      console.log(error);
+      router.replace("/signin");
+    }
+  };
+
   const value = {
     session,
     user,
     userDetails,
     signIn: (options) => supabase.auth.signIn(options),
+    signInOAuth,
     signUp,
     signOut: () => {
       setUserDetails(null);

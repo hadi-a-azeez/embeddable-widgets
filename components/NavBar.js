@@ -8,7 +8,7 @@ const NavBar = () => {
     <div className={styles.container}>
       <div className={styles.left}>
         <h1 className={styles.heading} onClick={() => router.push("/")}>
-          Embeddable
+          Vidme
         </h1>
       </div>
       <div className={styles.center}>

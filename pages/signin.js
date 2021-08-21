@@ -15,7 +15,7 @@ const Signin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState({ state: false, message: "" });
   const router = useRouter();
-  const { user, signIn } = useUser();
+  const { user, signIn, signInOAuth } = useUser();
 
   useEffect(() => {
     if (user) {
@@ -34,6 +34,10 @@ const Signin = () => {
       else setIsError({ state: false, message: user.message });
     }
     setIsLoading(false);
+  };
+
+  const handleSignInOAuth = async (provider) => {
+    signInOAuth({ provider });
   };
 
   return (
@@ -82,6 +86,18 @@ const Signin = () => {
               Sign up
             </a>{" "}
           </h1>
+          <div className={styles.line_wraper}>
+            <div className={styles.line} />
+            <h1 className={styles.or_text}>Or</h1>
+            <div className={styles.line} />
+          </div>
+          <button
+            className={styles.btn_google}
+            onClick={() => handleSignInOAuth("google")}
+          >
+            <img src="/google.png" alt="g" width="25px" height="auto" />
+            <span className={styles.btn_txt}>Continue with Google</span>
+          </button>
         </div>
         <div className={styles.right_grid}>
           <img src="/coverimage2.png" className={styles.coverimg} />
