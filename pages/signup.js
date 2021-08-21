@@ -7,8 +7,10 @@ import { useState } from "react";
 import { CreateUser } from "../utilities/api";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import { validation } from "../utilities/helper";
 
 const Signup = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -16,34 +18,16 @@ const Signup = () => {
 
   const handleSignupClick = async () => {
     setIsLoading(true);
-    const isValid = validation();
+    const { isValid, error } = validation(name, email, password);
+    setIsError(error);
     if (isValid) {
-      const user = await CreateUser({ email, password });
+      const user = await CreateUser({ name, email, password });
       console.log(user);
       if (user.status === 400)
         setIsError({ state: true, message: user.message });
-      else setIsError({ state: false, message: "" });
+      else setIsError({ state: true, message: user.message });
     }
     setIsLoading(false);
-  };
-
-  const validation = () => {
-    const validRegex =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (email !== "") {
-      if (email.match(validRegex)) {
-        if (password !== "") {
-          return true;
-        }
-        setIsError({ state: true, message: "Password field is required" });
-        return false;
-      } else {
-        setIsError({ state: true, message: "Enter a valid email" });
-        return false;
-      }
-    }
-    setIsError({ state: true, message: "email field is required" });
-    return false;
   };
 
   const router = useRouter();
@@ -63,6 +47,13 @@ const Signup = () => {
               <h1 className={styles.error_text}>{isError.message}</h1>
             </div>
           )}
+          <input
+            type="text"
+            className={styles.text_field}
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
           <input
             type="text"
             className={styles.text_field}
