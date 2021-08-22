@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useEffect, useState, createContext, useContext } from "react";
 import supabase from "../supabase";
 
@@ -9,7 +8,6 @@ export const UserContextProvider = (props) => {
   const [session, setSession] = useState(null);
   const [user, setUser] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
-  const router = useRouter();
 
   useEffect(() => {
     const session = supabase.auth.session();
@@ -40,11 +38,10 @@ export const UserContextProvider = (props) => {
   }, [user]);
 
   const signUp = async ({ email, password }) => {
-    const { user, error } = await supabase.auth.signUp({
+    return await supabase.auth.signUp({
       email,
       password,
     });
-    return { user, error };
   };
 
   const signInOAuth = async (provider) => {
@@ -58,6 +55,7 @@ export const UserContextProvider = (props) => {
     signIn: (options) => supabase.auth.signIn(options),
     signInOAuth,
     signUp,
+    userLoaded,
     signOut: () => {
       setUserDetails(null);
       return supabase.auth.signOut();
