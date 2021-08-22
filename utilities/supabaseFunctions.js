@@ -37,13 +37,14 @@ const copyBillingDetailsToCustomer = async (uuid, payment_method) => {
   const customer = payment_method.customer;
   const { name, phone, address } = payment_method.billing_details;
   await stripe.customers.update(customer, { name, phone, address });
-  const { error } = await supabase
+  const resp = await supabase
     .from("users")
     .update({
       billing_address: address,
       payment_method: payment_method[payment_method.type],
     })
     .eq("id", uuid);
+  console.log(resp);
   if (error) throw error;
 };
 
