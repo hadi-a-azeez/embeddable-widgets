@@ -33,6 +33,20 @@ export const createOrRetrieveCustomer = async ({ email, uuid }) => {
   if (data) return data.stripe_customer_id;
 };
 
+const copyBillingDetailsToCustomer = async (uuid, payment_method) => {
+  const customer = payment_method.customer;
+  const { name, phone, address } = payment_method.billing_details;
+  await stripe.customers.update(customer, { name, phone, address });
+  const { error } = await supabaseAdmin
+    .from("users")
+    .update({
+      billing_address: address,
+      payment_method: payment_method[payment_method.type],
+    })
+    .eq("id", uuid);
+  if (error) throw error;
+};
+
 export const manageSubscriptionStatusChange = async (
   subscriptionId,
   customerId,
