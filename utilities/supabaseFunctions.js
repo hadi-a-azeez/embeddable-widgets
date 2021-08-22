@@ -45,7 +45,7 @@ const copyBillingDetailsToCustomer = async (uuid, payment_method) => {
     })
     .eq("id", uuid);
   console.log(resp);
-  if (error) throw error;
+  if (resp.error) throw resp.error;
 };
 
 export const manageSubscriptionStatusChange = async (
