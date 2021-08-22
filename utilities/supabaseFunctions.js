@@ -34,7 +34,6 @@ export const createOrRetrieveCustomer = async ({ email, uuid }) => {
 };
 
 const copyBillingDetailsToCustomer = async (uuid, payment_method) => {
-  console.log("called copy");
   const customer = payment_method.customer;
   const { name, phone, address } = payment_method.billing_details;
   await stripe.customers.update(customer, { name, phone, address });
@@ -44,8 +43,7 @@ const copyBillingDetailsToCustomer = async (uuid, payment_method) => {
       billing_address: address,
       payment_method: payment_method[payment_method.type],
     })
-    .eq("id", uuid);
-  console.log(resp.error, resp.data, "loooook log");
+    .match({ id: uuid });
   if (resp.error) throw resp.error;
 };
 
@@ -68,6 +66,7 @@ export const manageSubscriptionStatusChange = async (
   const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
     expand: ["default_payment_method"],
   });
+  console.log(subscription.id);
   // Upsert the latest status of the subscription object.
   const subscriptionData = {
     id: subscription.id,

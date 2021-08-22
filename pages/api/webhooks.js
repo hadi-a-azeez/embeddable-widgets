@@ -36,6 +36,7 @@ const webhookHandler = async (req, res) => {
       console.log(`❌ Error message: ${err.message}`);
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
+    //console.log(event);
 
     if (relevantEvents.has(event.type)) {
       try {
