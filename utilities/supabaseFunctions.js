@@ -34,6 +34,7 @@ export const createOrRetrieveCustomer = async ({ email, uuid }) => {
 };
 
 const copyBillingDetailsToCustomer = async (uuid, payment_method) => {
+  console.log("called copy");
   const customer = payment_method.customer;
   const { name, phone, address } = payment_method.billing_details;
   await stripe.customers.update(customer, { name, phone, address });
@@ -44,7 +45,7 @@ const copyBillingDetailsToCustomer = async (uuid, payment_method) => {
       payment_method: payment_method[payment_method.type],
     })
     .eq("id", uuid);
-  console.log(resp);
+  console.log(resp.error, resp.data, "loooook log");
   if (resp.error) throw resp.error;
 };
 
@@ -101,7 +102,6 @@ export const manageSubscriptionStatusChange = async (
   console.log(
     `Inserted/updated subscription [${subscription.id}] for user [${uuid}]`
   );
-  console.log(subscription.default_payment_method);
   // For a new subscription copy the billing details to the customer object.
   // NOTE: This is a costly operation and should happen at the very end.
   if (createAction && subscription.default_payment_method)
