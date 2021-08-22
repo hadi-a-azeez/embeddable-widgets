@@ -23,12 +23,9 @@ const NavBar = () => {
           <h1 className={styles.heading_mob} onClick={() => router.push("/")}>
             Vidme
           </h1>
-          <img
-            src="/menu.png"
-            alt="menu"
-            className={styles.menu_icon}
-            onClick={() => handleMenuClick()}
-          />
+          <button className={styles.btn_menu} onClick={() => handleMenuClick()}>
+            <img src="/menu.png" alt="menu" className={styles.menu_icon} />
+          </button>
           <div className={styles.left}>
             <h1 className={styles.heading} onClick={() => router.push("/")}>
               Vidme

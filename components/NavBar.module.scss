@@ -65,11 +65,15 @@
     }
   }
 }
-.menu_icon {
+.btn_menu {
   display: none;
   position: absolute;
   right: 1rem;
   top: 1.3rem;
+  border: none;
+  background: transparent;
+}
+.menu_icon {
   height: 30px;
   width: auto;
 }
@@ -91,6 +95,9 @@
     min-height: 50px;
     display: block;
     position: relative;
+  }
+  .btn_menu {
+    display: block;
   }
   .menu_icon {
     display: block;
