@@ -1,18 +1,12 @@
-// import supabase from "../../supabase";
+import supabase from "../../supabase";
 
-// export const CreateUser = async ({ name, email, password }) => {
-//   const { user, session, error } = await supabase.auth.signUp({
-//     email,
-//     password,
-//   });
-//   if (user) {
-//     const { data, error: userError } = await supabase
-//       .from("users")
-//       .insert({ email, name });
-//   }
-//   return { user, error };
-// };
-
-// export const SignInUser = async (userData) => {
-//   return await supabase.auth.signIn(userData);
-// };
+export const updateUserName = async (user, name) => {
+  const { data, error } = await supabase
+    .from("users")
+    .update({
+      name: name,
+    })
+    .eq("id", user.id);
+  if (data) console.log(data);
+  else console.log(error);
+};

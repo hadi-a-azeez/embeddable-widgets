@@ -3,19 +3,20 @@ import NavBar from "../components/NavBar";
 import styles from "../styles/signInUp.module.scss";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { CreateUser } from "../utilities/api";
+import { updateUserName } from "../utilities/api";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { validation } from "../utilities/helper";
 import { useUser } from "../utilities/useUser";
 
 const Signup = () => {
+  const [user, setUser] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState({ state: false, message: "" });
-  const { user, signUp } = useUser();
+  const { signUp } = useUser();
 
   useEffect(() => {
     if (user) {
@@ -28,10 +29,15 @@ const Signup = () => {
     const { isValid, error } = validation(name, email, password);
     setIsError(error);
     if (isValid) {
-      const { user, error } = await signUp({ name, email, password });
-      console.log(user);
-      if (error) setIsError({ state: true, message: error.message });
-      else setIsError({ state: true, message: user.message });
+      const { user: userData, error } = await signUp({ email, password });
+      console.log(userData);
+      if (userData) {
+        await updateUserName(userData, name);
+        setUser(userData);
+        setIsError({ state: false, message: "" });
+      } else {
+        setIsError({ state: true, message: error.message });
+      }
     }
     setIsLoading(false);
   };

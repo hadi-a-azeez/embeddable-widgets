@@ -37,7 +37,12 @@ const Signin = () => {
   };
 
   const handleSignInOAuth = async (provider) => {
-    signInOAuth({ provider });
+    const { user, error } = await signInOAuth({ provider });
+    if (user) {
+      console.log(user);
+    } else {
+      console.log(error);
+    }
   };
 
   return (

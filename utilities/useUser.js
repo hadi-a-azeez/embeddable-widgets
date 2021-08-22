@@ -39,28 +39,16 @@ export const UserContextProvider = (props) => {
     }
   }, [user]);
 
-  const signUp = async ({ name, email, password }) => {
-    const { user, session, error } = await supabase.auth.signUp({
+  const signUp = async ({ email, password }) => {
+    const { user, error } = await supabase.auth.signUp({
       email,
       password,
     });
-    if (user) {
-      const { data, error: userError } = await supabase
-        .from("users")
-        .insert({ email, name });
-    }
     return { user, error };
   };
 
   const signInOAuth = async (provider) => {
-    const { user, error } = await supabase.auth.signIn(provider);
-    if (user) {
-      console.log(user);
-      router.replace("/dashboard");
-    } else {
-      console.log(error);
-      router.replace("/signin");
-    }
+    return await supabase.auth.signIn(provider);
   };
 
   const value = {
