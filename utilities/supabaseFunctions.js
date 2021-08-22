@@ -79,7 +79,7 @@ export const manageSubscriptionStatusChange = async (
       : null,
   };
 
-  const { error } = await supabaseAdmin
+  const { error } = await supabase
     .from("subscriptions")
     .insert([subscriptionData], { upsert: true });
   if (error) throw error;
