@@ -1,5 +1,8 @@
 .container {
   width: 100%;
+}
+.content {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -57,6 +60,102 @@
     cursor: pointer;
     &:hover {
       color: rgb(94, 94, 255);
+    }
+  }
+}
+.menu_icon {
+  display: none;
+  position: absolute;
+  right: 1rem;
+  top: 1.3rem;
+  height: 20px;
+  width: auto;
+}
+.heading_mob {
+  display: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(29, 29, 29);
+  cursor: pointer;
+  position: absolute;
+  left: 1rem;
+  top: 1.3rem;
+  margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    height: auto;
+    min-height: 50px;
+    display: block;
+    position: relative;
+  }
+  .menu_icon {
+    display: block;
+  }
+  .heading_mob {
+    display: block;
+  }
+  .content {
+    flex-direction: column;
+    border-radius: 0 0 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    max-height: 0;
+    width: 100%;
+    -moz-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  }
+  .is_expanded {
+    background-color: white;
+    overflow: hidden;
+    max-height: 500px; /* approximate max height */
+    width: 100%;
+    -moz-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -moz-transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+    -o-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+  }
+  .left {
+    position: relative;
+    left: 0;
+    width: 100%;
+
+    display: block;
+    padding-top: 20px;
+    margin: 0px;
+    margin-left: -5px;
+    .heading {
+      display: none;
+      font-size: 22px;
+      font-weight: 600;
+      color: rgb(29, 29, 29);
+      cursor: pointer;
+    }
+  }
+  .right {
+    position: relative;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .center {
+    flex-direction: column;
+    .link {
+      margin-right: 0;
+      text-align: center;
     }
   }
 }

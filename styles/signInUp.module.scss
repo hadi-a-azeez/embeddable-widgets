@@ -145,3 +145,31 @@
     margin-left: 0.5rem;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .main {
+    flex-direction: column;
+    height: 100%;
+  }
+  .left_grid {
+    width: 100%;
+  }
+  .right_grid {
+    width: 100%;
+  }
+  .text_field {
+    width: 90%;
+  }
+  .btn_main {
+    width: 90%;
+  }
+  .error_box {
+    width: 90%;
+  }
+  .line_wraper {
+    width: 90%;
+  }
+  .btn_google {
+    width: 90%;
+  }
+}
