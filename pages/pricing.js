@@ -10,6 +10,9 @@ const Pricing = () => {
     if (!session) {
       return router.push("/signin");
     }
+    if (!subscription) {
+      return router.push("/account");
+    }
 
     const res = await fetch("/api/create-checkout-session", {
       method: "POST",

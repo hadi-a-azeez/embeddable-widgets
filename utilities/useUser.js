@@ -8,6 +8,7 @@ export const UserContextProvider = (props) => {
   const [session, setSession] = useState(null);
   const [user, setUser] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
+  const [subscription, setSubscription] = useState(null);
 
   useEffect(() => {
     const session = supabase.auth.session();
@@ -26,14 +27,23 @@ export const UserContextProvider = (props) => {
   }, []);
 
   const getUserDetails = () => supabase.from("users").select("*").single();
-
+  const getSubscription = () =>
+    supabase
+      .from("subscriptions")
+      .select("*")
+      .in("status", ["trialing", "active"])
+      .single();
   useEffect(() => {
     if (user) {
-      Promise.allSettled([getUserDetails()]).then((results) => {
-        setUserDetails(results[0].value.data);
-        console.log(results[0].value.data);
-        setUserLoaded(true);
-      });
+      Promise.allSettled([getUserDetails(), getSubscription()]).then(
+        (results) => {
+          setUserDetails(results[0].value.data);
+          console.log(results[0].value.data);
+          setSubscription(results[1].value.data);
+
+          setUserLoaded(true);
+        }
+      );
     }
   }, [user]);
 
@@ -52,12 +62,14 @@ export const UserContextProvider = (props) => {
     session,
     user,
     userDetails,
+    subscription,
     signIn: (options) => supabase.auth.signIn(options),
     signInOAuth,
     signUp,
     userLoaded,
     signOut: () => {
       setUserDetails(null);
+      setSubscription(null);
       return supabase.auth.signOut();
     },
   };
