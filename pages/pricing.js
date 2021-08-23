@@ -13,7 +13,6 @@ const Pricing = () => {
     if (subscription) {
       return router.push("/account");
     }
-    console.log(subscription);
     const res = await fetch("/api/create-checkout-session", {
       method: "POST",
       headers: new Headers({
