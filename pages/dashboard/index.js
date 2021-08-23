@@ -4,7 +4,8 @@ import { useUser } from "../../utilities/useUser";
 import { useRouter } from "next/router";
 
 const Dashboard = () => {
-  const { user, signOut } = useUser();
+  const { userLoaded, user, session, userDetails, subscription, signOut } =
+    useUser();
   const router = useRouter();
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const Dashboard = () => {
         <button className={styles.btn_primary} onClick={() => signOut()}>
           Sign out
         </button>
+        {userDetails ? <h1> {userDetails[0].name} </h1> : <h1>Loading</h1>}
       </div>
     </div>
   );

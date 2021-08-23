@@ -26,20 +26,24 @@ export const UserContextProvider = (props) => {
     };
   }, []);
 
-  const getUserDetails = () => supabase.from("users").select("*").single();
+  const getUserDetails = () =>
+    supabase.from("users").select("*").eq("id", user.id);
   const getSubscription = () =>
     supabase
       .from("subscriptions")
       .select("*")
       .in("status", ["trialing", "active"])
-      .single();
+      .eq("user_id", user.id);
   useEffect(() => {
     if (user) {
-      Promise.allSettled([getUserDetails()]).then((results) => {
-        setUserDetails(results[0].value.data);
-        console.log(results[0].value);
-        setUserLoaded(true);
-      });
+      Promise.allSettled([getUserDetails(), getSubscription()]).then(
+        (results) => {
+          setUserDetails(results[0].value.data);
+          setSubscription(results[1].value.data);
+          console.log(results);
+          setUserLoaded(true);
+        }
+      );
     }
   }, [user]);
 
