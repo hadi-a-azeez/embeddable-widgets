@@ -28,17 +28,21 @@ export default function Home() {
     <div className={styles.container}>
       <NavBar />
       <Head>
-        <title>Embedable</title>
-        <meta name="embadable" content="embadable widgets" />
+        <title>vidlime</title>
+        <meta name="vidlime" content="vidlime" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.main_heading}>
-          Embeddable <a className={styles.link_text}>video</a> widgets <br></br>
-          for your website
+          Video hosting <span className={styles.heading_slim}>made simple</span>
         </h1>
-        <div className={styles.arrow_wraper}>
+        <h1 className={styles.sub_heading}>
+          Host videos with a single click. Customize, embed video anywhere and
+          more
+        </h1>
+        <button className={styles.btn_main}>Try it for free</button>
+        {/* <div className={styles.arrow_wraper}>
           <h1 className={styles.arrow_text}>TRY IT OUT</h1>
           <img
             src="https://assets.website-files.com/6080285e10b3ca5844aecb46/6081314b013edff5de11aaeb_colorful_arrow.svg"
@@ -47,7 +51,7 @@ export default function Home() {
             alt=""
             className={styles.arrow_img}
           ></img>
-        </div>
+        </div> */}
 
         <div className={styles.video_container}>
           <div
@@ -56,12 +60,39 @@ export default function Home() {
             data-prop-play_color="#4285f5"
           ></div>
         </div>
-
-        <h1 className={styles.sub_heading}>
-          An embeddable video widget for all your needs with <br></br>video
-          hosting to custom styling
-        </h1>
-        <button className={styles.btn_main}>Try it for free</button>
+        <h1 className={styles.heading}>Easy to use</h1>
+        <div className={styles.grid_container}>
+          <div className={`${styles.card} ${styles.pink}`}>
+            <img src="/customize.jpg" alt="" className={styles.card_img} />
+            <h1 className={`${styles.heading_card} ${styles.dark_pink}`}>
+              Upload a video
+            </h1>
+            <h1 className={`${styles.description_card} ${styles.dark_pink}`}>
+              Customizing play buttons to changing the thumbnail, everyhting is
+              customizable.
+            </h1>
+          </div>
+          <div className={`${styles.card} ${styles.brown_light}`}>
+            <img src="/customize.jpg" alt="" className={styles.card_img} />
+            <h1 className={`${styles.heading_card} ${styles.dark_brown}`}>
+              Customize the video
+            </h1>
+            <h1 className={`${styles.description_card} ${styles.dark_brown}`}>
+              Customizing play buttons to changing the thumbnail, everyhting is
+              customizable.
+            </h1>
+          </div>
+          <div className={`${styles.card} ${styles.blue_light}`}>
+            <img src="/customize.jpg" alt="" className={styles.card_img} />
+            <h1 className={`${styles.heading_card} ${styles.dark_blue}`}>
+              Manage videos
+            </h1>
+            <h1 className={`${styles.description_card} ${styles.dark_blue}`}>
+              Customizing play buttons to changing the thumbnail, everyhting is
+              customizable.
+            </h1>
+          </div>
+        </div>
       </main>
     </div>
   );
