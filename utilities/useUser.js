@@ -35,15 +35,11 @@ export const UserContextProvider = (props) => {
       .single();
   useEffect(() => {
     if (user) {
-      Promise.allSettled([getUserDetails(), getSubscription()]).then(
-        (results) => {
-          setUserDetails(results[0].value.data);
-          console.log(results[0].value.data);
-          setSubscription(results[1].value.data);
-
-          setUserLoaded(true);
-        }
-      );
+      Promise.allSettled([getUserDetails()]).then((results) => {
+        setUserDetails(results[0].value.data);
+        console.log(results[0].value);
+        setUserLoaded(true);
+      });
     }
   }, [user]);
 

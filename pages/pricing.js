@@ -3,7 +3,7 @@ import { getStripe } from "../utilities/stripe-client";
 import { useUser } from "../utilities/useUser";
 
 const Pricing = () => {
-  const { session, userLoaded, subscription } = useUser();
+  const { session, userDetails, subscription } = useUser();
   const router = useRouter();
 
   const handleCheckout = async (productId) => {
