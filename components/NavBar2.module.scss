@@ -1,0 +1,94 @@
+.header_main {
+  width: 100%;
+  padding: 35px;
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    display: flex;
+    cursor: pointer;
+    margin: 0px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 16px;
+  }
+
+  .menu_icon {
+    width: 25px;
+    height: 25px;
+    margin-top: 10px;
+    display: none;
+  }
+}
+
+.nav_actions {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+  .navlinks {
+    display: flex;
+    div {
+      cursor: pointer;
+      padding: 14px;
+      font-size: 17px;
+      font-weight: 500;
+      color: #6e6e6e;
+      &:hover {
+        color: #000;
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+  }
+
+  .account_buttons {
+    display: flex;
+    align-items: center;
+    .signup_button {
+      margin-left: 10px;
+      padding: 9px 20px;
+      background: #28c840;
+      border-radius: 12px;
+      font-weight: 500;
+      color: #fff;
+      font-size: 18px;
+      line-height: 24px;
+      display: inline-block;
+      cursor: pointer;
+      &:hover {
+        background: #49f062;
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+  }
+}
+.responsive {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  position: absolute;
+  background-color: #fff;
+  width: 90%;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 900;
+  padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .header_main .menu_icon {
+    display: block;
+  }
+}

@@ -20,16 +20,22 @@ const NavBar = () => {
               : `${styles.content}`
           }
         >
-          <h1 className={styles.heading_mob} onClick={() => router.push("/")}>
-            Vidme
-          </h1>
+          <div className={styles.heading_mob}>
+            <img src="./logo.png" style={{ width: "30px", height: "30px" }} />
+            <h1 onClick={() => router.push("/")}>Vidlime</h1>
+          </div>
           <button className={styles.btn_menu} onClick={() => handleMenuClick()}>
             <img src="/menu.png" alt="menu" className={styles.menu_icon} />
           </button>
           <div className={styles.left}>
-            <h1 className={styles.heading} onClick={() => router.push("/")}>
-              Vidme
-            </h1>
+            <div
+              className={styles.heading}
+              style={{ display: "flex", cursor: "pointer" }}
+              onClick={() => router.push("/")}
+            >
+              <img src="./logo.png" style={{ width: "40px", height: "40px" }} />
+              <h1>Vidlime</h1>
+            </div>
           </div>
           <div className={styles.center}>
             <h1 className={styles.link}>Pricing</h1>
