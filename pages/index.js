@@ -1,9 +1,29 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect } from "react";
 import NavBar from "../components/NavBar";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
+  useEffect(() => {
+    //crisp chat
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "24f8caf2-f7f4-454e-be83-97890dd0420b";
+    (() => {
+      const d = document;
+      const s = d.createElement("script");
+      s.src = "https://client.crisp.chat/l.js";
+      s.async = 1;
+      d.getElementsByTagName("body")[0].appendChild(s);
+    })();
+
+    //vidlime
+    const scriptLink = document.createElement("script");
+    scriptLink.async = true;
+    scriptLink.src = "https://raveo.xyz/vidscript.js";
+    document.body.appendChild(scriptLink);
+  });
+
   return (
     <div className={styles.container}>
       <NavBar />
@@ -28,23 +48,13 @@ export default function Home() {
             className={styles.arrow_img}
           ></img>
         </div>
-        {/* <video width="100%" height="100%" className={styles.video} controls>
-            <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-face-of-a-fighter-exhausted-during-a-fight-40988-large.mp4"
-              type="video/mp4"
-            />
-          </video> */}
+
         <div className={styles.video_container}>
           <div
             id="vidme-video"
             data-prop-id="test"
             data-prop-play_color="#4285f5"
           ></div>
-          <script
-            type="module"
-            src="https://raveo.xyz/vidscript.js"
-            async
-          ></script>
         </div>
 
         <h1 className={styles.sub_heading}>
