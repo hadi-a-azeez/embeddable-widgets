@@ -94,6 +94,8 @@
   }
 }
 .account_nav_expanded {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  user-select: none;
   z-index: 900;
   display: flex;
   position: absolute;
