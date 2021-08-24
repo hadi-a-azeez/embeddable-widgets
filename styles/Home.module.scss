@@ -47,7 +47,7 @@
       .hero_button {
         align-self: flex-start;
         padding: 14px 20px;
-        background: #28c840;
+        background: $color-primary;
         border-radius: 8px;
         font-weight: 500;
         color: #fff;
@@ -56,7 +56,7 @@
         display: inline-block;
         cursor: pointer;
         &:hover {
-          background: #49f062;
+          background: $color-primary-light;
         }
         @include for-phone {
           align-self: center;

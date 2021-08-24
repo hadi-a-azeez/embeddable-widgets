@@ -1,5 +1,5 @@
 import Head from "next/head";
-import NavBar from "../components/NavBar";
+import NavBar2 from "../components/NavBar2";
 import styles from "../styles/signInUp.module.scss";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
@@ -47,10 +47,10 @@ const Signup = () => {
     <div className={styles.container}>
       <Head>
         <title>Embedable</title>
-        <meta name="embadable" content="sign in to embeddable" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="vidlime" content="sign up to vidlime" />
+        <link rel="icon" href="/logo.png" />
       </Head>
-      <NavBar />
+      <NavBar2 />
       <div className={styles.main}>
         <div className={styles.left_grid}>
           <h1 className={styles.heading_main}>Create your account</h1>

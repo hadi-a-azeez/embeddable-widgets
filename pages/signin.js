@@ -1,9 +1,8 @@
 import Head from "next/head";
-import NavBar from "../components/NavBar";
+import NavBar2 from "../components/NavBar2";
 import styles from "../styles/signInUp.module.scss";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { SignInUser } from "../utilities/api";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { validation } from "../utilities/helper";
@@ -49,10 +48,10 @@ const Signin = () => {
     <div className={styles.container}>
       <Head>
         <title>Embedable</title>
-        <meta name="embadable" content="sign in to embeddable" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="vidlime" content="sign in to vidlime" />
+        <link rel="icon" href="/logo.png" />
       </Head>
-      <NavBar />
+      <NavBar2 />
       <div className={styles.main}>
         <div className={styles.left_grid}>
           <h1 className={styles.heading_main}>Sign in to your account</h1>
