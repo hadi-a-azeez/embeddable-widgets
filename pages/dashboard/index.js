@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import NavBar2 from "../../components/NavBar2";
 
 const Dashboard = () => {
+  const videos = ["test", "testmute"];
+
   const { userLoaded, user, session, userDetails, subscription, signOut } =
     useUser();
   const router = useRouter();
@@ -24,10 +26,14 @@ const Dashboard = () => {
             Upload Video
           </div>
         </div>
-        <img src="./list-empty.png" style={{ width: "30%" }} />
-        <div style={{ fontWeight: "500", fontSize: "20px", marginTop: "20px" }}>
-          No videos, Please upload one.
-        </div>
+        <>
+          <img src="./list-empty.png" style={{ width: "30%" }} />
+          <div
+            style={{ fontWeight: "500", fontSize: "20px", marginTop: "20px" }}
+          >
+            No videos, Please upload one.
+          </div>
+        </>
       </div>
     </div>
   );
