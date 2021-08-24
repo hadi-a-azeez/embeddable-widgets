@@ -88,7 +88,7 @@ export default function Home() {
 
           <div
             style={{
-              borderRadius: "20px",
+              borderRadius: "12px",
               overflow: "hidden",
               border: "4px solid #28C840",
             }}
@@ -96,7 +96,7 @@ export default function Home() {
             <div
               id="vidme-video"
               data-prop-id="test"
-              data-prop-play_color="#4285f5"
+              data-prop-play_color="#28C840"
             ></div>
           </div>
         </div>

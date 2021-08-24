@@ -34,9 +34,10 @@
         color: rgb(29, 29, 29);
         font-weight: 500;
         @include for-phone {
-          margin: 10px 0px 20px 0px;
+          margin: 15px 0px 20px 0px;
+          line-height: 25px;
           color: rgb(75, 75, 75);
-          font-size: 22px;
+          font-size: 16px;
           font-weight: normal;
           text-align: center;
           width: 90%;
