@@ -1,17 +1,21 @@
 import styles from "./NavBar2.module.scss";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useUser } from "../utilities/useUser";
 
-const NavBar2 = () => {
+const NavBar2 = ({ hidePages }) => {
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
+  const { userLoaded, user, session, userDetails, subscription, signOut } =
+    useUser();
+  const [isAccountExpanded, setIsAccountExpanded] = useState(false);
 
   const handleMenuClick = () => {
     setIsExpanded(!isExpanded);
   };
 
   return (
-    <>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <div className={styles.header_main}>
         <div className={styles.logo} onClick={() => router.push("/")}>
           <img src="./logo.png" style={{ width: "40px", height: "40px" }} />
@@ -20,30 +24,54 @@ const NavBar2 = () => {
         <div
           className={`${styles.nav_actions} ${isExpanded && styles.responsive}`}
         >
-          <div className={styles.navlinks}>
+          <div
+            className={styles.navlinks}
+            style={{ visibility: hidePages ? "hidden" : "visible" }}
+          >
             <div>Pricing</div>
             <div>FAQ</div>
             <div>Contact us</div>
           </div>
-          <div className={styles.account_buttons}>
-            <div
-              style={{
-                padding: "10px",
-                fontWeight: "bold",
-                fontSize: "17px",
-                color: "#212121",
-              }}
-              onClick={() => router.push("/signin")}
-            >
-              Signin
+          {!user ? (
+            <div className={styles.account_buttons}>
+              <div
+                style={{
+                  padding: "10px",
+                  fontWeight: "bold",
+                  fontSize: "17px",
+                  color: "#212121",
+                }}
+                onClick={() => router.push("/signin")}
+              >
+                Signin
+              </div>
+              <div
+                className={styles.signup_button}
+                onClick={() => router.push("/signup")}
+              >
+                Sign Up
+              </div>
             </div>
-            <div
-              className={styles.signup_button}
-              onClick={() => router.push("/signup")}
-            >
-              Sign Up
+          ) : (
+            <div className={styles.account_nav_container}>
+              <div
+                className={styles.account_nav}
+                onClick={() => setIsAccountExpanded((old) => !old)}
+              >
+                <div className={styles.nav_link}>Account</div>
+                <div className={styles.profile_image}>&nbsp;</div>
+              </div>
+
+              {isAccountExpanded && (
+                <div className={styles.account_nav_expanded}>
+                  <div onClick={() => router.push("/dashboard")}>Dashboard</div>
+                  <div>Upgrade Plan</div>
+                  <div>Settings</div>
+                  <div onClick={() => signOut()}>Sign out</div>
+                </div>
+              )}
             </div>
-          </div>
+          )}
         </div>
         <img
           src="/menu.png"
@@ -52,7 +80,7 @@ const NavBar2 = () => {
           className={styles.menu_icon}
         />
       </div>
-    </>
+    </div>
   );
 };
 

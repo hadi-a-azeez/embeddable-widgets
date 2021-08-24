@@ -2,6 +2,7 @@ import styles from "../../styles/dashboard.module.scss";
 import { useEffect } from "react";
 import { useUser } from "../../utilities/useUser";
 import { useRouter } from "next/router";
+import NavBar2 from "../../components/NavBar2";
 
 const Dashboard = () => {
   const { userLoaded, user, session, userDetails, subscription, signOut } =
@@ -14,11 +15,19 @@ const Dashboard = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.main}>
-        <button className={styles.btn_primary} onClick={() => signOut()}>
-          Sign out
-        </button>
-        {userDetails ? <h1> {userDetails[0].name} </h1> : <h1>Loading</h1>}
+      <NavBar2 hidePages />
+      <div className={styles.main_container}>
+        <div className={styles.topbar}>
+          <h1>Videos</h1>
+          <div className={styles.btn_primary}>
+            <img src="./upload-icon.svg" />
+            Upload Video
+          </div>
+        </div>
+        <img src="./list-empty.png" style={{ width: "30%" }} />
+        <div style={{ fontWeight: "500", fontSize: "20px", marginTop: "20px" }}>
+          No videos, Please upload one.
+        </div>
       </div>
     </div>
   );

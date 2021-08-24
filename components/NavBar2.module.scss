@@ -1,6 +1,6 @@
 @import "../styles/theme.scss";
 .header_main {
-  width: 100%;
+  width: 90%;
   padding: 35px;
   display: flex;
   justify-content: space-between;
@@ -91,5 +91,59 @@
 @media only screen and (max-width: 600px) {
   .header_main .menu_icon {
     display: block;
+  }
+}
+.account_nav_expanded {
+  z-index: 900;
+  display: flex;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: -40px;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  div {
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #6e6e6e;
+    &:hover {
+      color: black;
+    }
+  }
+}
+.account_nav_container {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  .account_nav {
+    display: flex;
+    align-items: center;
+
+    .profile_image {
+      background-image: linear-gradient(
+        to right,
+        #f78ca0 0%,
+        #f9748f 19%,
+        #fd868c 60%,
+        #fe9a8b 100%
+      );
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      @include for-phone {
+        display: none;
+      }
+    }
+    .nav_link {
+      padding: 14px;
+      font-size: 17px;
+      font-weight: 500;
+      color: #6e6e6e;
+      &:hover {
+        color: #000;
+      }
+    }
   }
 }
