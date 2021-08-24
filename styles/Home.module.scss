@@ -12,13 +12,14 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+
     padding-left: 10%;
     padding-right: 10%;
 
     @include for-phone {
       margin-top: 30px;
       padding: 0 3% 0 3%;
+      align-items: center;
       flex-direction: column-reverse;
     }
 
@@ -59,6 +60,22 @@
         }
         @include for-phone {
           align-self: center;
+        }
+      }
+      .hero_features_container {
+        display: flex;
+        margin-top: 6px;
+        flex-direction: column;
+        div {
+          color: #919191;
+          margin-top: 12px;
+          align-items: center;
+          margin-left: 5px;
+          display: flex;
+          img {
+            width: 22px;
+            margin-right: 5px;
+          }
         }
       }
     }

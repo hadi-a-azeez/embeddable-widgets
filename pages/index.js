@@ -50,9 +50,10 @@ export default function Home() {
         <div className={styles.text_container}>
           {divWidth > 600 && (
             <h1 className={styles.hero_text}>
-              <span style={{ color: "#28C840" }}>Hosting video</span> has{" "}
               <span>
-                never been <span style={{ color: "#28C840" }}>easier.</span>
+                The easiest way to{" "}
+                <span style={{ color: "#28C840" }}>host video </span>
+                online.
               </span>
             </h1>
           )}
@@ -62,10 +63,18 @@ export default function Home() {
             accross your website and emails.
           </p>
           <div className={styles.hero_button}>Start Uploading For Free</div>
-          <div
-            style={{ color: "#919191", marginTop: "12px", marginLeft: "5px" }}
-          >
-            No credit card required!
+          <div className={styles.hero_features_container}>
+            <div>
+              <img src="https://img.icons8.com/fluency/2x/ok.png" />
+              No credit card required!
+            </div>
+            <div>
+              <img src="https://img.icons8.com/fluency/2x/ok.png" />1 FREE Video
+            </div>
+            <div>
+              <img src="https://img.icons8.com/fluency/2x/ok.png" />
+              Unlimited views
+            </div>
           </div>
         </div>
         <div
@@ -79,9 +88,10 @@ export default function Home() {
         >
           {divWidth < 600 && (
             <h1 className={styles.hero_text}>
-              <span style={{ color: "#28C840" }}>Hosting video</span> has{" "}
               <span>
-                never been <span style={{ color: "#28C840" }}>easier.</span>
+                The easiest way to{" "}
+                <span style={{ color: "#28C840" }}>host video </span>
+                online.
               </span>
             </h1>
           )}
@@ -91,6 +101,7 @@ export default function Home() {
               borderRadius: "12px",
               overflow: "hidden",
               border: "4px solid #28C840",
+              marginTop: "6%",
             }}
           >
             <div
