@@ -1,12 +1,23 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import NavBar2 from "../components/NavBar2";
 import NavBar from "../components/NavBar";
 
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
+  const [divWidth, setDivWidth] = useState(null);
+
+  useEffect(() => {
+    setDivWidth(window?.innerWidth);
+    function handleResize() {
+      setDivWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
   useEffect(() => {
     //crisp chat
     window.$crisp = [];
@@ -35,67 +46,61 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.main_heading}>
-          Video hosting <span className={styles.heading_slim}>made simple</span>
-        </h1>
-        <h1 className={styles.sub_heading}>
-          Host videos with a single click. Customize, embed video anywhere and
-          more
-        </h1>
-        <button className={styles.btn_main}>Try it for free</button>
-        {/* <div className={styles.arrow_wraper}>
-          <h1 className={styles.arrow_text}>TRY IT OUT</h1>
-          <img
-            src="https://assets.website-files.com/6080285e10b3ca5844aecb46/6081314b013edff5de11aaeb_colorful_arrow.svg"
-            loading="lazy"
-            width="68"
-            alt=""
-            className={styles.arrow_img}
-          ></img>
-        </div> */}
+      <div className={styles.hero_container}>
+        <div className={styles.text_container}>
+          {divWidth > 600 && (
+            <h1 className={styles.hero_text}>
+              <span style={{ color: "#28C840" }}>Hosting video</span> has{" "}
+              <span>
+                never been <span style={{ color: "#28C840" }}>easier.</span>
+              </span>
+            </h1>
+          )}
 
-        <div className={styles.video_container}>
+          <p>
+            Easily upload your videos and embed them with our powerfull player
+            accross your website and emails.
+          </p>
+          <div className={styles.hero_button}>Start Uploading For Free</div>
           <div
-            id="vidme-video"
-            data-prop-id="test"
-            data-prop-play_color="#4285f5"
-          ></div>
-        </div>
-        <h1 className={styles.heading}>Easy to use</h1>
-        <div className={styles.grid_container}>
-          <div className={`${styles.card} ${styles.pink}`}>
-            <img src="/customize.jpg" alt="" className={styles.card_img} />
-            <h1 className={`${styles.heading_card} ${styles.dark_pink}`}>
-              Upload a video
-            </h1>
-            <h1 className={`${styles.description_card} ${styles.dark_pink}`}>
-              Customizing play buttons to changing the thumbnail, everyhting is
-              customizable.
-            </h1>
-          </div>
-          <div className={`${styles.card} ${styles.brown_light}`}>
-            <img src="/customize.jpg" alt="" className={styles.card_img} />
-            <h1 className={`${styles.heading_card} ${styles.dark_brown}`}>
-              Customize the video
-            </h1>
-            <h1 className={`${styles.description_card} ${styles.dark_brown}`}>
-              Customizing play buttons to changing the thumbnail, everyhting is
-              customizable.
-            </h1>
-          </div>
-          <div className={`${styles.card} ${styles.blue_light}`}>
-            <img src="/customize.jpg" alt="" className={styles.card_img} />
-            <h1 className={`${styles.heading_card} ${styles.dark_blue}`}>
-              Manage videos
-            </h1>
-            <h1 className={`${styles.description_card} ${styles.dark_blue}`}>
-              Customizing play buttons to changing the thumbnail, everyhting is
-              customizable.
-            </h1>
+            style={{ color: "#919191", marginTop: "12px", marginLeft: "5px" }}
+          >
+            No credit card required!
           </div>
         </div>
-      </main>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            textAlign: "center",
+            width: "90%",
+          }}
+        >
+          {divWidth < 600 && (
+            <h1 className={styles.hero_text}>
+              <span style={{ color: "#28C840" }}>Hosting video</span> has{" "}
+              <span>
+                never been <span style={{ color: "#28C840" }}>easier.</span>
+              </span>
+            </h1>
+          )}
+
+          <div
+            style={{
+              borderRadius: "20px",
+              overflow: "hidden",
+              border: "4px solid #28C840",
+            }}
+          >
+            <div
+              id="vidme-video"
+              data-prop-id="test"
+              data-prop-play_color="#4285f5"
+            ></div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -15,7 +15,7 @@ const NavBar2 = () => {
       <div className={styles.header_main}>
         <div className={styles.logo} onClick={() => router.push("/")}>
           <img src="./logo.png" style={{ width: "40px", height: "40px" }} />
-          <div style={{ marginLeft: "10px" }}>vidlime</div>
+          <div style={{ marginLeft: "10px" }}>Vidlime</div>
         </div>
         <div
           className={`${styles.nav_actions} ${isExpanded && styles.responsive}`}
@@ -27,11 +27,22 @@ const NavBar2 = () => {
           </div>
           <div className={styles.account_buttons}>
             <div
-              style={{ padding: "10px", fontWeight: "bold", fontSize: "17px" }}
+              style={{
+                padding: "10px",
+                fontWeight: "bold",
+                fontSize: "17px",
+                color: "#212121",
+              }}
+              onClick={() => router.push("/signin")}
             >
               Signin
             </div>
-            <div className={styles.signup_button}>Sign Up</div>
+            <div
+              className={styles.signup_button}
+              onClick={() => router.push("/signup")}
+            >
+              Sign Up
+            </div>
           </div>
         </div>
         <img

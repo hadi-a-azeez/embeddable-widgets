@@ -4,3 +4,9 @@ $color-black: #192033;
 $color-pink: #f6b1c8;
 $color-brown-light: #f7ddb2;
 $color-blue-light: #cdf5e7;
+
+@mixin for-phone {
+  @media only screen and (max-width: 600px) {
+    @content;
+  }
+}

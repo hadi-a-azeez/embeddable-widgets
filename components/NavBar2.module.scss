@@ -1,3 +1,4 @@
+@import "../styles/theme.scss";
 .header_main {
   width: 100%;
   padding: 35px;
@@ -12,7 +13,7 @@
     font-weight: bold;
   }
 
-  @media only screen and (max-width: 600px) {
+  @include for-phone {
     padding: 16px;
   }
 
@@ -29,7 +30,7 @@
   justify-content: space-between;
   width: 60%;
 
-  @media only screen and (max-width: 600px) {
+  @include for-phone {
     display: none;
   }
   .navlinks {
@@ -44,7 +45,7 @@
         color: #000;
       }
     }
-    @media only screen and (max-width: 600px) {
+    @include for-phone {
       flex-direction: column;
     }
   }
@@ -67,7 +68,7 @@
         background: #49f062;
       }
     }
-    @media only screen and (max-width: 600px) {
+    @include for-phone {
       flex-direction: column;
     }
   }
