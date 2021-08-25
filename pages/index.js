@@ -33,7 +33,7 @@ export default function Home() {
     //vidlime
     const scriptLink = document.createElement("script");
     scriptLink.async = true;
-    scriptLink.src = "https://raveo.xyz/vidscript.js";
+    scriptLink.src = "./vidlime-script.js";
     document.body.appendChild(scriptLink);
   });
 
@@ -97,19 +97,17 @@ export default function Home() {
           )}
 
           <div
+            id="vidme-video"
+            data-prop-id="test"
+            data-prop-play_color="#28C840"
             style={{
+              width: "100%",
+              objectFit: "cover",
               borderRadius: "12px",
               overflow: "hidden",
               border: "4px solid #28C840",
-              marginTop: "6%",
             }}
-          >
-            <div
-              id="vidme-video"
-              data-prop-id="test"
-              data-prop-play_color="#28C840"
-            ></div>
-          </div>
+          ></div>
         </div>
       </div>
     </div>
