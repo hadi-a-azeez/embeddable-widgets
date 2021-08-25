@@ -1,4 +1,4 @@
-import styles from "./NavBar2.module.scss";
+import styles from "./NavBar.module.scss";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useUser } from "../utilities/useUser";
@@ -82,7 +82,7 @@ const NavBar2 = ({ hidePages }) => {
                         fontWeight: "500",
                       }}
                     >
-                      muhamnmed bsnasimda
+                      {userDetails.email}
                     </div>
                   </div>
                   <div>Upgrade Plan</div>
