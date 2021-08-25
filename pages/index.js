@@ -1,7 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import NavBar2 from "../components/NavBar2";
 import NavBar from "../components/NavBar";
 
 import styles from "../styles/Home.module.scss";
@@ -39,7 +37,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <NavBar2 />
+      <NavBar />
       <Head>
         <title>Vidlime</title>
         <meta name="vidlime" content="vidlime" />

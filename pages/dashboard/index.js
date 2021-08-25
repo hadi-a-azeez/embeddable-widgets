@@ -2,7 +2,7 @@ import styles from "../../styles/dashboard.module.scss";
 import { useEffect } from "react";
 import { useUser } from "../../utilities/useUser";
 import { useRouter } from "next/router";
-import NavBar2 from "../../components/NavBar2";
+import NavBar from "../../components/NavBar";
 
 const Dashboard = () => {
   const videos = ["test", "testmute"];
@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   return (
     <div className={styles.container}>
-      <NavBar2 hidePages />
+      <NavBar hidePages />
       <div className={styles.main_container}>
         <div className={styles.topbar}>
           <h1>Videos</h1>
