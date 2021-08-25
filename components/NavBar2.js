@@ -54,12 +54,15 @@ const NavBar2 = ({ hidePages }) => {
             </div>
           ) : (
             <div className={styles.account_nav_container}>
-              <div
-                className={styles.account_nav}
-                onClick={() => setIsAccountExpanded((old) => !old)}
-              >
-                <div className={styles.nav_link}>Account</div>
+              <div className={styles.account_nav}>
+                <div
+                  className={styles.nav_link}
+                  onClick={() => router.push("/dashboard")}
+                >
+                  Dashboard
+                </div>
                 <img
+                  onClick={() => setIsAccountExpanded((old) => !old)}
                   src="https://img.icons8.com/fluency/2x/test-account.png"
                   className={styles.profile_image}
                 />
@@ -67,7 +70,21 @@ const NavBar2 = ({ hidePages }) => {
 
               {isAccountExpanded && (
                 <div className={styles.account_nav_expanded}>
-                  <div onClick={() => router.push("/dashboard")}>Dashboard</div>
+                  <div>
+                    <div style={{ fontSize: "12px" }}>Signed in as</div>
+                    <div
+                      style={{
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        width: "140px",
+                        color: "#088248",
+                        fontWeight: "500",
+                      }}
+                    >
+                      muhamnmed bsnasimda
+                    </div>
+                  </div>
                   <div>Upgrade Plan</div>
                   <div>Settings</div>
                   <div style={{ color: "red" }} onClick={() => signOut()}>

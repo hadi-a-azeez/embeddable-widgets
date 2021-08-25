@@ -101,6 +101,7 @@ export default function Home() {
             data-prop-id="test"
             data-prop-play_color="#28C840"
             style={{
+              marginTop: "30px",
               width: "100%",
               objectFit: "cover",
               borderRadius: "12px",
