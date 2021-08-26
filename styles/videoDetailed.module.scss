@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  min-height: 80vh;
+  align-items: center;
+}
+.left_container {
+  width: 30%;
+  min-height: 80vh;
+
+  border-right: 1px solid #dfe0e5;
+  border-top: 1px solid #dfe0e5;
+}
+.right_container {
+  width: 70%;
+  min-height: 80vh;
+  background-color: #f7f7f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.demo {
+  width: 90%;
+  height: auto;
+  border-radius: 0.9rem;
+}
