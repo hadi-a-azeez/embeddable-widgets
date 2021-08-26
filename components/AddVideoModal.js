@@ -43,7 +43,7 @@ const AddVideoModal = ({ triggerButton }) => {
               <div {...getRootProps({ className: styles.dropzone })}>
                 <input {...getInputProps()} />
                 <div>
-                  <p>Drag 'n' drop video here, or</p>
+                  <p>Drag &apos;n&apos; drop video here, or</p>
                   <div className={styles.button_select}> Select Video</div>
                 </div>
               </div>
