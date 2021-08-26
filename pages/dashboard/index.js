@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useUser } from "../../utilities/useUser";
 import { useRouter } from "next/router";
 import NavBar from "../../components/NavBar";
+import AddVideoModal from "../../components/AddVideoModal";
 
 const Dashboard = () => {
   const videos = ["test", "testmute"];
@@ -17,23 +18,34 @@ const Dashboard = () => {
 
   return (
     <div className={styles.container}>
-      <NavBar hidePages />
+      <NavBar hidePages white />
       <div className={styles.main_container}>
         <div className={styles.topbar}>
           <h1>Videos</h1>
-          <div className={styles.btn_primary}>
-            <img src="./upload-icon.svg" />
-            Upload Video
-          </div>
+          <AddVideoModal
+            triggerButton={
+              <div className={styles.btn_primary}>
+                <img src="./upload-icon.svg" />
+                Upload Video
+              </div>
+            }
+          />
         </div>
-        <>
+        <div
+          style={{
+            marginTop: "60px",
+            display: "grid",
+            placeItems: "center",
+            width: "90%",
+          }}
+        >
           <img src="./list-empty.png" style={{ width: "30%" }} />
           <div
             style={{ fontWeight: "500", fontSize: "20px", marginTop: "20px" }}
           >
             No videos, Please upload one.
           </div>
-        </>
+        </div>
       </div>
     </div>
   );
