@@ -1,7 +1,29 @@
 .container {
-  width: 8%;
+  width: 100px;
   height: 80vh;
   margin-left: 1rem;
   border-radius: 0.9rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.8rem;
+}
+.item_wraper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+
+  .icon {
+    width: 30px;
+    height: auto;
+  }
+  .name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #b4b4b4;
+    margin-top: 0.5rem;
+  }
 }
