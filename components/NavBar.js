@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useUser } from "../utilities/useUser";
 
-const NavBar2 = ({ hidePages }) => {
+const NavBar2 = ({ hidePages, white }) => {
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
   const { userLoaded, user, session, userDetails, subscription, signOut } =
@@ -16,7 +16,10 @@ const NavBar2 = ({ hidePages }) => {
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <div className={styles.header_main}>
+      <div
+        className={styles.header_main}
+        style={{ backgroundColor: white ? "#ffffff" : "transparent" }}
+      >
         <div className={styles.logo} onClick={() => router.push("/")}>
           <img src="./logo.png" style={{ width: "40px", height: "40px" }} />
           <div style={{ marginLeft: "10px" }}>Vidlime</div>
