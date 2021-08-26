@@ -21,7 +21,7 @@ const NavBar2 = ({ hidePages, white }) => {
         style={{ backgroundColor: white ? "#ffffff" : "transparent" }}
       >
         <div className={styles.logo} onClick={() => router.push("/")}>
-          <img src="./logo.png" style={{ width: "40px", height: "40px" }} />
+          <img src="/logo.png" style={{ width: "40px", height: "40px" }} />
           <div style={{ marginLeft: "10px" }}>Vidlime</div>
         </div>
         <div

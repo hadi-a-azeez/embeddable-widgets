@@ -1,9 +1,11 @@
 .container {
   width: 100px;
-  height: 80vh;
-  margin-left: 1rem;
-  border-radius: 0.9rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  height: 90vh;
+  // margin-left: 1rem;
+  // border-radius: 0.9rem;
+  // box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  border-right: 1px solid #dfe0e5;
+  border-top: 1px solid #dfe0e5;
 
   display: flex;
   flex-direction: column;
@@ -15,15 +17,37 @@
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    color: black;
+  }
 
   .icon {
     width: 30px;
     height: auto;
+
+    &:hover {
+      background-color: #f3f3f3;
+      border-radius: 50%;
+      padding: 0.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   .name {
     font-size: 12px;
     font-weight: 400;
     color: #b4b4b4;
     margin-top: 0.5rem;
+  }
+  .selected {
+    background-color: #49f062;
+    border-radius: 50%;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
