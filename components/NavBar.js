@@ -60,7 +60,7 @@ const NavBar2 = ({ hidePages, white }) => {
               <div className={styles.account_nav}>
                 <div
                   className={styles.nav_link}
-                  onClick={() => router.push("/dashboard")}
+                  onClick={() => router.push("/account/dashboard")}
                 >
                   Dashboard
                 </div>

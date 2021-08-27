@@ -25,7 +25,7 @@ const Dashboard = () => {
           <AddVideoModal
             triggerButton={
               <div className={styles.btn_primary}>
-                <img src="./upload-icon.svg" />
+                <img src="/upload-icon.svg" />
                 Upload Video
               </div>
             }
@@ -39,7 +39,7 @@ const Dashboard = () => {
             width: "90%",
           }}
         >
-          <img src="./list-empty.png" style={{ width: "30%" }} />
+          <img src="/list-empty.png" style={{ width: "30%" }} />
           <div
             style={{ fontWeight: "500", fontSize: "20px", marginTop: "20px" }}
           >

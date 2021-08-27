@@ -18,7 +18,7 @@ const Signin = () => {
 
   useEffect(() => {
     if (user) {
-      router.replace("/dashboard");
+      router.replace("/account/dashboard");
     }
   }, [user]);
 
