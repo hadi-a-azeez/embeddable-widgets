@@ -1,7 +1,7 @@
-import styles from "../../styles/videoDetailed.module.scss";
-import NavBar from "../../components/NavBar";
-import SideBar from "../../components/sideBar";
-import { useVideo } from "../../utilities/useVideo";
+import styles from "../styles/videoDetailed.module.scss";
+import NavBar from "../components/NavBar";
+import SideBar from "../components/sideBar";
+import { useVideo } from "../utilities/useVideo";
 
 const VideoDetailed = () => {
   const { selected } = useVideo();
