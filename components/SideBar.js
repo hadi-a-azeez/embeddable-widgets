@@ -2,13 +2,16 @@ import styles from "./sideBar.module.scss";
 import { useVideo } from "../utilities/useVideo";
 
 const SideBar = () => {
-  const { selected, setSelected } = useVideo();
+  const { selected, setSelected, setIsExpanded } = useVideo();
 
   return (
     <div className={styles.container}>
       <div
         className={styles.item_wraper}
-        onClick={() => setSelected("overview")}
+        onClick={() => {
+          setSelected("overview");
+          setIsExpanded(true);
+        }}
       >
         <img
           className={`${styles.icon} ${
@@ -21,7 +24,10 @@ const SideBar = () => {
       </div>
       <div
         className={styles.item_wraper}
-        onClick={() => setSelected("customize")}
+        onClick={() => {
+          setSelected("customize");
+          setIsExpanded(true);
+        }}
       >
         <img
           className={`${styles.icon} ${
@@ -34,7 +40,10 @@ const SideBar = () => {
       </div>
       <div
         className={styles.item_wraper}
-        onClick={() => setSelected("analytics")}
+        onClick={() => {
+          setSelected("analytics");
+          setIsExpanded(true);
+        }}
       >
         <img
           className={`${styles.icon} ${

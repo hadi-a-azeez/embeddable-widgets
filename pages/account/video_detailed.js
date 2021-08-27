@@ -2,9 +2,10 @@ import styles from "../../styles/videoDetailed.module.scss";
 import NavBar from "../../components/NavBar";
 import SideBar from "../../components/SideBar";
 import { useVideo } from "../../utilities/useVideo";
+import { useState } from "react";
 
 const VideoDetailed = () => {
-  const { selected } = useVideo();
+  const { selected, isExpanded, setIsExpanded } = useVideo();
   const Overview = () => {
     return (
       <>
@@ -33,7 +34,17 @@ const VideoDetailed = () => {
       <NavBar />
       <main className={styles.main}>
         <SideBar />
-        <div className={styles.left_container}>
+        <div
+          className={`${styles.left_container} ${
+            isExpanded && styles.is_expanded
+          }`}
+        >
+          <div className={styles.handler_wraper}>
+            <div
+              className={styles.mobile_drawer}
+              onClick={() => setIsExpanded(false)}
+            />
+          </div>
           {selected === "overview" && <Overview />}
           {selected === "customize" && <Customize />}
           {selected === "analytics" && <Analytics />}

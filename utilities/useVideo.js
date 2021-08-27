@@ -4,7 +4,8 @@ export const VideoContext = createContext();
 
 export const VideoContextProvider = (props) => {
   const [selected, setSelected] = useState("overview");
-  const value = { selected, setSelected };
+  const [isExpanded, setIsExpanded] = useState(true);
+  const value = { selected, setSelected, isExpanded, setIsExpanded };
 
   return <VideoContext.Provider value={value} {...props} />;
 };
