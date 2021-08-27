@@ -1,10 +1,13 @@
 import "../styles/globals.css";
 import { UserContextProvider } from "../utilities/useUser";
+import { VideoContextProvider } from "../utilities/useVideo";
 
 function MyApp({ Component, pageProps }) {
   return (
     <UserContextProvider>
-      <Component {...pageProps} />
+      <VideoContextProvider>
+        <Component {...pageProps} />
+      </VideoContextProvider>
     </UserContextProvider>
   );
 }
