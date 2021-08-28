@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   height: 100%;
-  background-color: #f2f5ff;
+  background-color: #fafafa;
   animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
   display: flex;
   justify-content: center;
@@ -11,7 +11,7 @@
 .dropzone {
   width: 80%;
   border: 1px dashed grey;
-  background-color: #fafafa;
+  background-color: #fff;
   height: 50%;
   display: grid;
   place-items: center;
@@ -31,7 +31,9 @@
     color: #fff;
     font-size: 18px;
     line-height: 24px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     &:hover {
       background: #49f062;

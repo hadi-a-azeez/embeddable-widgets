@@ -6,8 +6,7 @@ import NavBar from "../../components/NavBar";
 import AddVideoModal from "../../components/AddVideoModal";
 
 const Dashboard = () => {
-  const videos = ["test", "testmute"];
-
+  const videos = ["test", "testmute", "h", "h", "test", "testmute", "h", "h"];
   const { userLoaded, user, session, userDetails, subscription, signOut } =
     useUser();
   const router = useRouter();
@@ -31,21 +30,32 @@ const Dashboard = () => {
             }
           />
         </div>
-        <div
-          style={{
-            marginTop: "60px",
-            display: "grid",
-            placeItems: "center",
-            width: "90%",
-          }}
-        >
-          <img src="/list-empty.png" style={{ width: "30%" }} />
+        {videos.length < 1 ? (
           <div
-            style={{ fontWeight: "500", fontSize: "20px", marginTop: "20px" }}
+            style={{
+              marginTop: "60px",
+              display: "grid",
+              placeItems: "center",
+              width: "90%",
+            }}
           >
-            No videos, Please upload one.
+            <img src="/list-empty.png" style={{ width: "30%" }} />
+            <div
+              style={{ fontWeight: "500", fontSize: "20px", marginTop: "20px" }}
+            >
+              No videos, Please upload one.
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className={styles.video_container}>
+            {videos.map((vid) => (
+              <div key="" className={styles.video_item}>
+                <img src="https://source.unsplash.com/random" />
+                <div>{vid}</div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
