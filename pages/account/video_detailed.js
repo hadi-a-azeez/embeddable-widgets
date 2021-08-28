@@ -10,7 +10,6 @@ const VideoDetailed = () => {
   const containerRef = useRef();
 
   const handleOnTouchMove = (e) => {
-    e.preventDefault();
     const touchLocations = e.targetTouches[0];
     const pageY = (100 * touchLocations.pageY) / screen.height;
     if (pageY < 40) {
@@ -21,9 +20,7 @@ const VideoDetailed = () => {
   };
 
   const handleOnTouchEnd = (e) => {
-    e.preventDefault();
-    const getStyle = window.getComputedStyle(containerRef.current);
-    const top = (100 * parseInt(getStyle.top)) / screen.height;
+    const top = parseInt(containerRef.current.style.top);
     console.log(top);
     if (top < 70) {
       containerRef.current.style.top = "40vh";
@@ -32,6 +29,7 @@ const VideoDetailed = () => {
       setIsExpanded(false);
     }
   };
+
   const Overview = () => {
     return (
       <>

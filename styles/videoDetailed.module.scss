@@ -11,6 +11,7 @@
   flex-direction: row;
   min-height: 90vh;
   align-items: center;
+  z-index: 1;
 }
 .left_container {
   width: 30%;
@@ -33,6 +34,7 @@
     background-color: white;
     top: 0vh;
     transition: transform 0.2s ease-in;
+    z-index: 50;
   }
 }
 .handler_wraper {
@@ -51,6 +53,7 @@
     height: 6px;
     border-radius: 0.9rem;
     background-color: #6c757d;
+    z-index: 9999;
   }
 }
 
