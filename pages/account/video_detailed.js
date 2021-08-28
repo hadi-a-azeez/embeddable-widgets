@@ -2,10 +2,34 @@ import styles from "../../styles/videoDetailed.module.scss";
 import NavBar from "../../components/NavBar";
 import SideBar from "../../components/SideBar";
 import { useVideo } from "../../utilities/useVideo";
-import { useState } from "react";
+import { useRef } from "react";
 
 const VideoDetailed = () => {
   const { selected, isExpanded, setIsExpanded } = useVideo();
+  const handlerRef = useRef();
+  const containerRef = useRef();
+
+  const handleOnTouchMove = (e) => {
+    const touchLocations = e.targetTouches[0];
+    const pageY = (100 * touchLocations.pageY) / screen.height;
+    if (pageY < 40) {
+      console.log("cannot drag");
+    } else {
+      containerRef.current.style.top = `${pageY}vh`;
+    }
+  };
+
+  const handleOnTouchEnd = (e) => {
+    const top = parseInt(containerRef.current.style.top);
+    console.log(top);
+    if (top < 70) {
+      containerRef.current.style.top = "40vh";
+    } else {
+      containerRef.current.style.top = "100vh";
+      setIsExpanded(false);
+    }
+  };
+
   const Overview = () => {
     return (
       <>
@@ -35,6 +59,8 @@ const VideoDetailed = () => {
       <main className={styles.main}>
         <SideBar />
         <div
+          draggable={true}
+          ref={containerRef}
           className={`${styles.left_container} ${
             isExpanded && styles.is_expanded
           }`}
@@ -42,7 +68,11 @@ const VideoDetailed = () => {
           <div className={styles.handler_wraper}>
             <div
               className={styles.mobile_drawer}
-              onClick={() => setIsExpanded(false)}
+              ref={handlerRef}
+              draggable={true}
+              onTouchStart={(e) => e.preventDefault()}
+              onTouchMove={(e) => handleOnTouchMove(e)}
+              onTouchEnd={(e) => handleOnTouchEnd(e)}
             />
           </div>
           {selected === "overview" && <Overview />}

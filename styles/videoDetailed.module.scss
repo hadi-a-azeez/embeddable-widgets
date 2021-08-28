@@ -11,6 +11,7 @@
   flex-direction: row;
   min-height: 90vh;
   align-items: center;
+  z-index: 1;
 }
 .left_container {
   width: 30%;
@@ -28,12 +29,12 @@
     min-height: 60vh;
     height: 60vh;
     position: fixed;
-    bottom: 0px;
     border-radius: 1rem 1rem 0rem 0rem;
     border: none;
     background-color: white;
-    transform: translateY(60vh);
-    transition: transform 0.4s ease-in;
+    top: 0vh;
+    transition: transform 0.2s ease-in;
+    z-index: 50;
   }
 }
 .handler_wraper {
@@ -52,12 +53,15 @@
     height: 6px;
     border-radius: 0.9rem;
     background-color: #6c757d;
+    touch-action: none;
+    z-index: 9999;
   }
 }
 
 .is_expanded {
-  transform: translateY(0vh);
+  top: 40vh;
 }
+
 .demo {
   width: 80%;
   height: auto;
