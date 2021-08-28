@@ -53,6 +53,7 @@
     height: 6px;
     border-radius: 0.9rem;
     background-color: #6c757d;
+    touch-action: none;
     z-index: 9999;
   }
 }

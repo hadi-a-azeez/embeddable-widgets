@@ -70,6 +70,7 @@ const VideoDetailed = () => {
               className={styles.mobile_drawer}
               ref={handlerRef}
               draggable={true}
+              onTouchStart={(e) => e.preventDefault()}
               onTouchMove={(e) => handleOnTouchMove(e)}
               onTouchEnd={(e) => handleOnTouchEnd(e)}
             />
