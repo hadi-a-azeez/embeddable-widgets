@@ -21,15 +21,27 @@ const VideoDetailed = () => {
     //   console.log(bottom);
     // };
     //react-draggable
-    handlerRef.current.addEventListener("touchmove", handleTouchMove);
-
-    const handleTouchMove = (e) => {
+    handlerRef.current.addEventListener("touchmove", (e) => {
+      e.preventDefault();
       const touchLocations = e.targetTouches[0];
-      console.log(touchLocations);
+      const pageY = (100 * touchLocations.pageY) / screen.height;
+      if (pageY < 40) {
+        console.log("cannot drag");
+      } else {
+        containerRef.current.style.top = `${pageY}vh`;
+      }
+    });
+    handlerRef.current.addEventListener("touchend", (e) => {
       const getStyle = window.getComputedStyle(containerRef.current);
-      const bottom = parseInt(getStyle.bottom);
-      containerRef.current.style.bottom = `${bottom + touchLocations.pageY}px`;
-    };
+      const top = (100 * parseInt(getStyle.top)) / screen.height;
+      console.log(top);
+      if (top < 80) {
+        containerRef.current.style.top = "40vh";
+      } else {
+        containerRef.current.style.top = "100vh";
+        setIsExpanded(false);
+      }
+    });
   }, []);
   const Overview = () => {
     return (

@@ -28,11 +28,10 @@
     min-height: 60vh;
     height: 60vh;
     position: fixed;
-    bottom: 0px;
     border-radius: 1rem 1rem 0rem 0rem;
     border: none;
     background-color: white;
-    transform: translateY(60vh);
+    top: 0vh;
     transition: transform 0.2s ease-in;
   }
 }
@@ -56,7 +55,7 @@
 }
 
 .is_expanded {
-  transform: translateY(0vh);
+  top: 40vh;
 }
 .demo {
   width: 80%;
