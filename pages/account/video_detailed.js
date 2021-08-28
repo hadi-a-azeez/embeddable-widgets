@@ -2,10 +2,35 @@ import styles from "../../styles/videoDetailed.module.scss";
 import NavBar from "../../components/NavBar";
 import SideBar from "../../components/SideBar";
 import { useVideo } from "../../utilities/useVideo";
-import { useState } from "react";
+import { useRef, useEffect } from "react";
 
 const VideoDetailed = () => {
   const { selected, isExpanded, setIsExpanded } = useVideo();
+  const handlerRef = useRef();
+  const containerRef = useRef();
+
+  useEffect(() => {
+    // handlerRef.current.addEventListener("mousedown", () => {
+    //   handlerRef.current.addEventListener("mousemove", onDrag);
+    // });
+
+    // const onDrag = ({ movementY }) => {
+    //   const getStyle = window.getComputedStyle(containerRef.current);
+    //   const bottom = parseInt(getStyle.bottom);
+    //   containerRef.current.style.bottom = `${bottom + movementY}px`;
+    //   console.log(bottom);
+    // };
+    //react-draggable
+    handlerRef.current.addEventListener("touchmove", handleTouchMove);
+
+    const handleTouchMove = (e) => {
+      const touchLocations = e.targetTouches[0];
+      console.log(touchLocations);
+      const getStyle = window.getComputedStyle(containerRef.current);
+      const bottom = parseInt(getStyle.bottom);
+      containerRef.current.style.bottom = `${bottom + touchLocations.pageY}px`;
+    };
+  }, []);
   const Overview = () => {
     return (
       <>
@@ -35,6 +60,8 @@ const VideoDetailed = () => {
       <main className={styles.main}>
         <SideBar />
         <div
+          draggable={true}
+          ref={containerRef}
           className={`${styles.left_container} ${
             isExpanded && styles.is_expanded
           }`}
@@ -42,7 +69,8 @@ const VideoDetailed = () => {
           <div className={styles.handler_wraper}>
             <div
               className={styles.mobile_drawer}
-              onClick={() => setIsExpanded(false)}
+              ref={handlerRef}
+              draggable={true}
             />
           </div>
           {selected === "overview" && <Overview />}
