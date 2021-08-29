@@ -1,5 +1,5 @@
 import styles from "../../styles/dashboard.module.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../../utilities/useUser";
 import { useRouter } from "next/router";
 import NavBar from "../../components/NavBar";
@@ -11,6 +11,8 @@ const Dashboard = () => {
     useUser();
   const router = useRouter();
 
+  const [isModal, setIsModal] = useState(false);
+
   useEffect(() => {
     if (!user) router.replace("/signin");
   }, [user]);
@@ -21,14 +23,11 @@ const Dashboard = () => {
       <div className={styles.main_container}>
         <div className={styles.topbar}>
           <h1>Videos</h1>
-          <AddVideoModal
-            triggerButton={
-              <div className={styles.btn_primary}>
-                <img src="/upload-icon.svg" />
-                Upload Video
-              </div>
-            }
-          />
+          <div className={styles.btn_primary} onClick={() => setIsModal(true)}>
+            <img src="/upload-icon.svg" />
+            Upload Video
+          </div>
+          <AddVideoModal isModal={isModal} setIsModal={setIsModal} />
         </div>
         {videos.length < 1 ? (
           <div
@@ -48,8 +47,8 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className={styles.video_container}>
-            {videos.map((vid) => (
-              <div key="" className={styles.video_item}>
+            {videos.map((vid, i) => (
+              <div key={i} className={styles.video_item}>
                 <img src="https://source.unsplash.com/random" />
                 <div>{vid}</div>
               </div>

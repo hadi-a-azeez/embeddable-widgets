@@ -12,6 +12,8 @@
     "@chakra-ui/focus-lock": "^1.1.10",
     "@stripe/stripe-js": "^1.17.1",
     "@supabase/supabase-js": "^1.22.0",
+    "aws-sdk": "^2.978.0",
+    "axios": "^0.21.1",
     "highlight.js": "^11.2.0",
     "next": "11.1.0",
     "node-sass": "^6.0.1",
