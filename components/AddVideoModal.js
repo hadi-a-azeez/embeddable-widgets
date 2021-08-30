@@ -1,4 +1,5 @@
 import FocusLock from "@chakra-ui/focus-lock";
+import { nanoid } from "nanoid";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
 import { MousePointer, X } from "react-feather";
@@ -7,17 +8,37 @@ import "reactjs-popup/dist/index.css";
 import { uploadVideoDO } from "../utilities/DOUpload";
 import styles from "./AddVideoModal.module.scss";
 import UploadProgress from "./UploadProgress";
+import supabase from "../supabase";
 
 const AddVideoModal = ({ triggerButton, setIsModal, isModal }) => {
   const [videoSelected, setVideoSelected] = useState(null);
   const [videoUploading, setVideoUploading] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
+  const [videoName, setVideoName] = useState("");
+  const [videoRaw, setVideoRaw] = useState(null);
 
   const onDrop = async (acceptedFiles) => {
     setVideoSelected(URL.createObjectURL(acceptedFiles[0]));
+    setVideoRaw(acceptedFiles[0]);
+  };
+
+  const processVideoUpload = async () => {
     setVideoUploading(true);
-    await uploadVideoDO(acceptedFiles[0], setVideoProgress);
-    setTimeout(() => setIsModal(false), 2000);
+    const videoId = nanoid();
+    const videoToUpload = new File([videoRaw], videoId, {
+      type: videoRaw.type,
+    });
+    const uploadResult = await uploadVideoDO(videoToUpload, setVideoProgress);
+
+    if (uploadResult) {
+      let { error } = await supabase.from("videos").insert({
+        video_id: videoId,
+        video_name: videoName == "" ? videoId : videoName,
+        video_color: "#000000",
+      });
+      console.log(error);
+      setTimeout(() => setIsModal(false), 2000);
+    }
   };
 
   const closeModal = () => {
@@ -101,11 +122,14 @@ const AddVideoModal = ({ triggerButton, setIsModal, isModal }) => {
                   Video Name
                 </div>
                 <input
+                  value={videoName}
+                  onChange={(e) => setVideoName(e.target.value)}
                   className={styles.input}
                   type="text"
                   placeholder="My homepage video"
                 />
                 <div
+                  onClick={processVideoUpload}
                   className={styles.button_select}
                   style={{ width: "90%", height: "60px" }}
                 >

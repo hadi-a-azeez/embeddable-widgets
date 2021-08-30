@@ -21,9 +21,9 @@ export const uploadVideoDO = (file, setProgress) => {
     s3.putObject(params, function (err, data) {
       if (err) {
         console.log(err, err.stack);
-        reject();
+        reject(false);
       } else {
-        resolve();
+        resolve(true);
       }
     }).on("httpUploadProgress", function (evt) {
       setProgress((evt.loaded / evt.total) * 100);
