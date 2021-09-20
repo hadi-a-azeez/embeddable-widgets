@@ -65,15 +65,15 @@ const VideoDetailed = () => {
             isExpanded && styles.is_expanded
           }`}
         >
-          <div className={styles.handler_wraper}>
-            <div
-              className={styles.mobile_drawer}
-              ref={handlerRef}
-              draggable={true}
-              onTouchStart={(e) => e.preventDefault()}
-              onTouchMove={(e) => handleOnTouchMove(e)}
-              onTouchEnd={(e) => handleOnTouchEnd(e)}
-            />
+          <div
+            className={styles.handler_wraper}
+            ref={handlerRef}
+            draggable={true}
+            onTouchStart={(e) => e.preventDefault()}
+            onTouchMove={(e) => handleOnTouchMove(e)}
+            onTouchEnd={(e) => handleOnTouchEnd(e)}
+          >
+            <div className={styles.mobile_drawer} />
           </div>
           {selected === "overview" && <Overview />}
           {selected === "customize" && <Customize />}
