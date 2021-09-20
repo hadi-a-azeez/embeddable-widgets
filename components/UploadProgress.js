@@ -1,4 +1,4 @@
-import styles from "./uploadProgress.module.scss";
+import styles from "./styles/uploadProgress.module.scss";
 
 const UploadProgress = ({ progress }) => {
   return (

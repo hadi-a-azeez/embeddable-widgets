@@ -29,12 +29,12 @@
     min-height: 60vh;
     height: 60vh;
     position: fixed;
+    bottom: 0px;
     border-radius: 1rem 1rem 0rem 0rem;
     border: none;
     background-color: white;
-    top: 0vh;
+    transform: translateY(60vh);
     transition: transform 0.2s ease-in;
-    z-index: 50;
   }
 }
 .handler_wraper {
@@ -43,7 +43,7 @@
   @include for-phone {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
     margin-top: 0.4rem;
   }
@@ -53,13 +53,15 @@
     height: 6px;
     border-radius: 0.9rem;
     background-color: #6c757d;
-    touch-action: none;
-    z-index: 9999;
+  }
+  .close_btn {
+    width: 30px;
+    height: 30px;
   }
 }
 
 .is_expanded {
-  top: 40vh;
+  transform: translateY(0vh);
 }
 
 .demo {

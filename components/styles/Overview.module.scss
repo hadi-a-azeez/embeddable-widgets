@@ -1,0 +1,19 @@
+@import "../../styles/theme.scss";
+
+.heading {
+  font-size: 20px;
+}
+.label {
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-dark-gray;
+  margin-top: 0.7rem;
+}
+.input_field {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.7rem;
+  border: 1px solid #dfe0e5;
+  margin-top: 0.4rem;
+  font-size: 19px;
+}

@@ -1,4 +1,4 @@
-import styles from "./sideBar.module.scss";
+import styles from "./styles/sideBar.module.scss";
 import { useVideo } from "../utilities/useVideo";
 
 const SideBar = () => {

@@ -6,7 +6,7 @@ import { MousePointer, X } from "react-feather";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { uploadVideoDO } from "../utilities/DOUpload";
-import styles from "./AddVideoModal.module.scss";
+import styles from "./styles/AddVideoModal.module.scss";
 import UploadProgress from "./UploadProgress";
 import supabase from "../supabase";
 
