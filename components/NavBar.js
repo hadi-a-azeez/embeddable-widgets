@@ -43,6 +43,7 @@ const NavBar2 = ({ hidePages, white }) => {
                   fontWeight: "bold",
                   fontSize: "17px",
                   color: "#212121",
+                  cursor: "pointer",
                 }}
                 onClick={() => router.push("/signin")}
               >

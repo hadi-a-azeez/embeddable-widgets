@@ -4,17 +4,28 @@ import { useUser } from "../../utilities/useUser";
 import { useRouter } from "next/router";
 import NavBar from "../../components/NavBar";
 import AddVideoModal from "../../components/AddVideoModal";
+import supabase from "../../supabase";
 
 const Dashboard = () => {
-  const videos = ["test", "testmute", "h", "h", "test", "testmute", "h", "h"];
+  const [videos, setVideos] = useState([]);
   const { userLoaded, user, session, userDetails, subscription, signOut } =
     useUser();
-  const router = useRouter();
-
   const [isModal, setIsModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
+  const router = useRouter();
   useEffect(() => {
     if (!user) router.replace("/signin");
+    const getVideosOfUser = async () => {
+      const { error, data } = await supabase
+        .from("videos")
+        .select()
+        .match({ user_id: user?.id });
+      data && setVideos(data);
+      setIsLoading(false);
+    };
+    console.log(user, "usr");
+    user?.id && getVideosOfUser();
   }, [user]);
 
   return (
@@ -29,7 +40,7 @@ const Dashboard = () => {
           </div>
           <AddVideoModal isModal={isModal} setIsModal={setIsModal} />
         </div>
-        {videos.length < 1 ? (
+        {!isLoading && videos.length < 1 ? (
           <div
             style={{
               marginTop: "60px",
@@ -45,12 +56,14 @@ const Dashboard = () => {
               No videos, Please upload one.
             </div>
           </div>
+        ) : isLoading ? (
+          <p>Loading</p>
         ) : (
           <div className={styles.video_container}>
             {videos.map((vid, i) => (
               <div key={i} className={styles.video_item}>
                 <img src="https://source.unsplash.com/random" />
-                <div>{vid}</div>
+                <div>{vid.video_name}</div>
               </div>
             ))}
           </div>

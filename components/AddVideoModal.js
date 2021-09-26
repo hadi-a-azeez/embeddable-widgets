@@ -9,6 +9,7 @@ import { uploadVideoDO } from "../utilities/DOUpload";
 import styles from "./styles/AddVideoModal.module.scss";
 import UploadProgress from "./UploadProgress";
 import supabase from "../supabase";
+import { useUser } from "../utilities/useUser";
 
 const AddVideoModal = ({ triggerButton, setIsModal, isModal }) => {
   const [videoSelected, setVideoSelected] = useState(null);
@@ -16,6 +17,8 @@ const AddVideoModal = ({ triggerButton, setIsModal, isModal }) => {
   const [videoProgress, setVideoProgress] = useState(0);
   const [videoName, setVideoName] = useState("");
   const [videoRaw, setVideoRaw] = useState(null);
+  const { userLoaded, user, session, userDetails, subscription, signOut } =
+    useUser();
 
   const onDrop = async (acceptedFiles) => {
     setVideoSelected(URL.createObjectURL(acceptedFiles[0]));
@@ -35,6 +38,7 @@ const AddVideoModal = ({ triggerButton, setIsModal, isModal }) => {
         video_id: videoId,
         video_name: videoName == "" ? videoId : videoName,
         video_color: "#000000",
+        user_id: userDetails?.id,
       });
       console.log(error);
       setTimeout(() => setIsModal(false), 2000);
